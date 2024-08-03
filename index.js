@@ -76,6 +76,7 @@ async function main() {
         }
 
         // Lend
+        /*
         let amount = Math.random() * (lendRangeMax - lendRangeMin) + lendRangeMin;
         amount = Math.floor(amount * 1_000_000);
         let txHash = await executeTransaction(lendAmount, gasPriceWei, localNonce, amount);
@@ -90,7 +91,8 @@ async function main() {
         txHash = await executeTransaction(redeem, gasPriceWei, localNonce);
         if (!txHash) break;
         localNonce++;
-        
+        */
+               
         // Wrap
         const wrapAmountMin = 0.0003;
         const wrapAmountMax = 0.0004;
