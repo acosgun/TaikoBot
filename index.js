@@ -1,4 +1,6 @@
 require('dotenv').config();
+//const {getWeb3} = require('./config/web3');
+const {} = require('web3');
 const { getWeb3, walletAddress, switchRpc } = require('./config/web3');
 const { lendAmount } = require('./src/module/minterest/lend');
 const { redeem } = require('./src/module/minterest/redeem');
@@ -52,13 +54,15 @@ async function executeTransaction(action, gasPriceWei, localNonce, ...args) {
 }
 
 async function main() {
-    let web3Instance = getWeb3();
+    const web3Instance = getWeb3();
+
     const lendRangeMin = 1.0;
     const lendRangeMax = 2.0;
     const maxIterations = randomIterations();
     let iterationCount = 0;
 
     while (iterationCount < maxIterations) {
+        console.log(`iteration: ${iterationCount}.`);
         const gasPriceWei = randomGasPrice(web3Instance);
         let localNonce = await getNonce(web3Instance);
 
@@ -114,6 +118,7 @@ async function main() {
         console.log(`Unwrap Transaction sent: ${txLink}, \nAmount: ${wrapAmount} ETH`);
 
         iterationCount++;
+        
     }
 
     console.log(`Completed ${maxIterations} iterations. Exiting loop.`);

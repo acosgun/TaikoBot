@@ -1,5 +1,5 @@
 require('dotenv').config();
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 
 const rpcUrls = [
     'https://rpc.taiko.xyz',
@@ -23,7 +23,10 @@ function switchRpc() {
 }
 
 const web3 = getWeb3();
-const privateKey = process.env.PRIVATE_KEY;
+const privateKey = Buffer.from(
+    'aaaaaaaaaaaaaaaaaaa',
+    'hex',
+  )
 const account = web3.eth.accounts.privateKeyToAccount(privateKey);
 const walletAddress = account.address;
 
