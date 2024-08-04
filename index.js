@@ -16,7 +16,10 @@ function randomGasPrice(web3Instance) {
 }
 
 function randomIterations() {
-    return Math.random() < 0.5 ? 7 : 8; 
+    min = 40;
+    max = 50;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    //return Math.random() < 0.5 ? 7 : 8;
 }
 
 async function getNonce(web3Instance) {
@@ -62,7 +65,7 @@ async function main() {
     let iterationCount = 0;
 
     while (iterationCount < maxIterations) {
-        console.log(`iteration: ${iterationCount}.`);
+        console.log(`----Iteration: ${iterationCount}/${maxIterations}`);
         const gasPriceWei = randomGasPrice(web3Instance);
         let localNonce = await getNonce(web3Instance);
 
