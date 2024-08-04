@@ -40,6 +40,10 @@ async function executeTransaction(action, gasPriceWei, localNonce, ...args) {
                 return;
             }
 
+            // Sleep for a random interval between 21,000 and 91,000 milliseconds
+            const sleepTime = Math.floor(Math.random() * (91000 - 21000 + 1)) + 21000;
+            await new Promise(resolve => setTimeout(resolve, sleepTime));
+
             return await action(...args, gasPriceWei.toString(), localNonce);
         } catch (error) {
             console.error(`Error executing transaction: ${error.message}`);
